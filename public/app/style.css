@@ -1,0 +1,24 @@
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: greenyellow !important;
+}
+
+
+
+
+
+.margin-top
+{
+
+    margin-top: 20px;
+}
+.feature-image{
+max-height: 200px;
+}
+.footer-bottom
+{
+    padding: 20px;
+    margin-top: 20px;
+    background: greenyellow;
+
+}
