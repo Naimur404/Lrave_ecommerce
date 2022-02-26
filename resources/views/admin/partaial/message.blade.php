@@ -9,3 +9,9 @@
         </ul>
     </div>
 @endif
+@if(Session::has('sucess'))
+<div class="alert alert-success">
+    <p>{{ Session::get('sucess') }}</p>
+</div>
+
+@endif

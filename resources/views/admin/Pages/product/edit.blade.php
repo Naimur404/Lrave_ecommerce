@@ -8,20 +8,20 @@
         <div class="card-body">
             @include('admin.partaial.message')
 
-            <form class="forms-sample" action="{{ route('admin.product.store') }}" method="post"
+            <form class="forms-sample" action="{{ route('admin.product.update',$product->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputName1">Title</label>
-                    <input type="text" class="form-control" name="title" id="exampleInputName1" placeholder="Title">
+                    <input type="text" class="form-control" name="title" id="exampleInputName1" value="{{ $product->title }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Description</label>
-                    <textarea class="form-control" name="description" id="exampleTextarea1" rows="2"></textarea>
+                    <textarea class="form-control" name="description" id="exampleTextarea1" rows="2" >{{ $product->description }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword4">Price</label>
-                    <input type="number" class="form-control" name="price" id="exampleInputPassword4" placeholder="Price">
+                    <input type="number" class="form-control" name="price" id="exampleInputPassword4" value="{{ $product->price }}">
                 </div>
                 {{-- <div class="form-group">
             <label for="exampleInputPassword4">Price</label>
@@ -53,13 +53,13 @@
                 <div class="form-group">
                     <label for="exampleInputCity1">Quantity</label>
                     <input type="number" class="form-control" name="quantity" id="exampleInputCity1"
-                        placeholder="Quantity">
+                        value="{{ $product->quantity }}">
                 </div>
                 {{-- <div class="form-group">
           <label for="exampleTextarea1">Textarea</label>
           <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
         </div> --}}
-                <button type="submit" class="btn btn-success mr-2">Add Product</button>
+                <button type="submit" class="btn btn-success mr-2">Update Product</button>
                 <button class="btn btn-light">Cancel</button>
             </form>
         </div>
