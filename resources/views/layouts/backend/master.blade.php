@@ -11,6 +11,7 @@
 @include('admin.partaial.sidenavbar')
 
     <div class="main-panel">
+
         @yield('content')
       <div class="content-wrapper"> </div>
       <!-- content-wrapper ends -->
@@ -31,3 +32,6 @@
 
 </body>
 @include('admin.partaial.script')
+
+
+

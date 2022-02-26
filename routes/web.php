@@ -19,8 +19,10 @@ Route::get('/',[Pagescontroller::class,'index'])->name('index');
 Route::get('/products',[Pagescontroller::class,'products'])->name('products');
 Route::group(['prefix'=> 'admin'],function(){
 
-Route::get('/',[AdminPage::class,'index'])->name('admin.index');
+// Route::get('/',[AdminPage::class,'index'])->name('admin.index');
 Route::get('/products/create',[AdminPage::class,'product_create'])->name('admin.product.create');
 Route::post('/products',[AdminPage::class,'product_store'])->name('admin.product.store');
+Route::get('/',[AdminPage::class,'show'])->name('admin.product.show');
+Route::get('/products/create/{id}',[AdminPage::class,'product_edit'])->name('admin.product.edit');
 });
 

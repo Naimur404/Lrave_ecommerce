@@ -3,7 +3,7 @@
     <div class="card">
 
         <div class="card-header">
-            Add Product
+            Edit Product
         </div>
         <div class="card-body">
             @include('admin.partaial.message')

@@ -11,13 +11,21 @@ class AdminPage extends Controller
 {
     public function index()
     {
-        return view('admin.pages.index');
+        return view('admin.Pages.product.index');
     }
     public function product_create()
     {
         return view('admin.pages.product.create');
     }
    public function product_store(Request $request){
+
+$request->validate([
+'title' => 'required',
+'description'=> 'required',
+'price'=> 'required|numeric',
+'quantity'=> 'required|numeric'
+]);
+
        $product = new Product;
        $product->title= $request->title;
        $product->description= $request->description;
@@ -58,5 +66,13 @@ foreach($request->image as $image){
 
     }
       return redirect()->route('admin.product.create');
+    }
+    public function show(){
+        $products = Product::orderby('id','desc')->get();
+        return view('admin.Pages.product.index')->with('products',$products);
+    }
+    public function product_edit($id){
+        $products = Product::orderby('id','desc')->get();
+        return view('admin.pages.product.edit')->with('products',$products);
     }
 }
