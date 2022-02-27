@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="widget">
-                        <h3>Feature Products</h3>
+                        <h3>Searched Products</h3>
                         @include('pages.product.partial.all_product')
                         <div class="d-flex justify-content-center">
                             {!! $products->links() !!}

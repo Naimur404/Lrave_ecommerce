@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[Pagescontroller::class,'index'])->name('index');
 Route::get('/products',[ProductController::class,'products'])->name('products');
+Route::get('/products/{slug}',[ProductController::class,'show'])->name('product.show');
+Route::get('/search',[ProductController::class,'search'])->name('search');
 Route::group(['prefix'=> 'admin'],function(){
 
 // Route::get('/',[AdminPage::class,'index'])->name('admin.index');

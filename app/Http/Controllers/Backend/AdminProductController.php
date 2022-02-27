@@ -94,7 +94,7 @@ class AdminProductController extends Controller
 
 
         $product->save();
-        return redirect()->route('admin.product.show');
+        return redirect()->route('admin.product.index');
 
         //PRODUCTIMAGE MODEL inser image
 

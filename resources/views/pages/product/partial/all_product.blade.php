@@ -15,16 +15,17 @@
 
                 @foreach ($product->images as $image )
                 @if ($i > 0)
-                <img class="feature-image"
+                <a href="{{ route('product.show',$product->slug) }}">
+                <img class=" card-img-top feature-image"
                 src="{{ asset('images/'. $image->image) }}"
-                class="card-img-top" alt="...">
+                class="card-img-top" alt="{{ $product->title }}"></a>
                 @endif
                     @php
                   $i--;
                  @endphp
                 @endforeach
             <div class="card-body">
-                <h5 class="card-title">{{ $product->title }}</h5>
+                <h5 class="card-title"><a href="{{ route('product.show',$product->slug) }}">{{ $product->title }}</a></h5>
                 <p class="card-text">Taka - {{ $product->price }}</p>
                 <a href="#" class="btn btn-primary">Add to cart</a>
             </div>
@@ -33,8 +34,5 @@
     </div>
 
     @endforeach
-</div>
-<div class="d-flex justify-content-center">
-    {!! $products->links() !!}
 </div>
 
