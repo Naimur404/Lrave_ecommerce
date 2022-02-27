@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminPage;
 use App\Http\Controllers\Backend\AdminProductController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Fontend\Pagescontroller;
 use App\Http\Controllers\Fontend\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -28,9 +29,21 @@ Route::group(['prefix '=> '/product'],function(){
     Route::post('/store',[AdminProductController::class,'store'])->name('admin.product.store');
     Route::post('/edit/{id}',[AdminProductController::class,'update'])->name('admin.product.update');
     Route::post('/delete/{id}',[AdminProductController::class,'delete'])->name('admin.product.delete');
-    Route::get('/',[AdminProductController::class,'show'])->name('admin.product.index');
+    Route::get('/product',[AdminProductController::class,'show'])->name('admin.product.index');
     Route::get('/edit/{id}',[AdminProductController::class,'edit'])->name('admin.product.edit');
 });
+
+//categories route
+Route::group(['prefix '=> '/categories'],function(){
+
+    Route::get('/categories/create',[CategoryController::class,'create'])->name('admin.category.create');
+    Route::post('/categories/store',[CategoryController::class,'store'])->name('admin.category.store');
+    Route::post('/categories/edit/{id}',[CategoryController::class,'update'])->name('admin.category.update');
+    Route::post('/categories/delete/{id}',[CategoryController::class,'delete'])->name('admin.category.delete');
+    Route::get('/categories',[CategoryController::class,'index'])->name('admin.category.index');
+    Route::get('/categories/edit/{id}',[CategoryController::class,'edit'])->name('admin.category.edit');
+});
+
 
 });
 
