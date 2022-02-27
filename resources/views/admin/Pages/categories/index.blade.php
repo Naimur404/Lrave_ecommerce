@@ -29,7 +29,7 @@
                             @endif
                         </td>
                         <td>
-                            <img src="{{ asset('images/' . $category->image) }}" width="100">
+                            <img src="{{ asset('images/' . $category->image) }}" width="150">
 
                         </td>
                         {{-- <td>{{ $category->parent->name }}</td> --}}

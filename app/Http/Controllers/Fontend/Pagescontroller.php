@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class Pagescontroller extends Controller
 {
     public function index(){
-        return view('pages.index');
+        $products = Product::orderby('id','desc')->paginate(1);
+        return view('pages.index',compact('products'));
     }
 }
 
