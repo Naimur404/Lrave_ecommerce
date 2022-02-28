@@ -11,7 +11,7 @@
 
                 @foreach (App\Models\Category::orderby('name', 'asc')->where('praent_id', $praent->id)->get()
                 as $child)
-                            <a href="#main-{{ $praent->id }}" class="list-group-item">
+                            <a href="{{ route('categories.show', $child->id) }}" class="list-group-item">
 
                                 <img src="{{ asset('images/' . $child->image) }}" width="30">
                                 {{ $child->name }}</a>

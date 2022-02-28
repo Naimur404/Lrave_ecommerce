@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
 
     public function products(){
-        $products = Product::orderby('id','desc')->get();
+        $products = Product::orderby('id','desc')->paginate(9);
         return view('pages.product.index')->with('products',$products);
     }
     public function show($slug){

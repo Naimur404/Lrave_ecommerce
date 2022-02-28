@@ -1,6 +1,6 @@
 @extends('layouts.fontend.master')
 @section('title')
-{{ $product->title }} | Laravel Ecommerce Site
+    {{ $product->title }} | Laravel Ecommerce Site
 @endsection
 @section('content')
 
@@ -41,10 +41,16 @@
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
+                        <div class="mt-3">
+                             <p>Category <span class="badge bg-info">{{ $product->category->name }}</span></p>
+                             <p>Brand <span class="badge bg-info">{{ $product->brand->name }}</span></p>
+                        </div>
                     </div>
                     <div class="col-md-8">
                         <div class="widget">
-                            <h4>{{ $product->title }} <span class=" badge bg-primary" style="display: inline-block">{{ $product->quantity < 1 ? ' Out Of Stock' : $product->quantity .' In Stock'}}</span></h4>
+                            <h4>{{ $product->title }} <span class=" badge bg-primary"
+                                    style="display: inline-block">{{ $product->quantity < 1 ? ' Out Of Stock' : $product->quantity . ' In Stock' }}</span>
+                            </h4>
 
                             <h6>{{ $product->price }} Taka
 
@@ -65,4 +71,3 @@
 
     </body>
 @endsection
-

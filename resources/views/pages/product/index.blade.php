@@ -17,7 +17,9 @@
                     <h3>All Products</h3>
 
                    @include('pages.product.partial.all_product')
-
+                   <div class="d-flex justify-content-center">
+                    {!! $products->links() !!}
+                </div>
                 </div>
             </div>
 
