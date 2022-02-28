@@ -3,46 +3,35 @@
     <div class="card">
 
         <div class="card-header">
-            Add Category
+            Edit Category
         </div>
         <div class="card-body">
             @include('admin.partaial.message')
 
-            <form class="forms-sample" action="{{ route('admin.category.store') }}" method="post"
+            <form class="forms-sample" action="{{ route('admin.brand.update', $brand->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputName1"> Category Name</label>
-                    <input type="text" class="form-control" name="name" id="exampleInputName1" placeholder="Name">
+                    <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{ $brand->name }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Description</label>
-                    <textarea class="form-control" name="description" id="exampleTextarea1" rows="2"></textarea>
+                    <textarea class="form-control" name="description" id="exampleTextarea1" rows="2" >{{ $brand->description }}</textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleInputName1">Parent Category</label>
-                    <select class="form-control" name="praent_id" id="">
-                        <option value="
-                        ">Please Select a praent Category</option>
-                        @foreach ($main_category as  $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-
-                        @endforeach
-                    </select>
-                </div>
 
                 {{-- <div class="form-group">
             <label for="exampleInputPassword4">Price</label>
             <input type="number" class="form-control" id="exampleInputPassword4" placeholder="Price">
           </div> --}}
                 <div class="form-group">
-                    <label>File upload</label>
+                    <label>Old Image</label><br>
 
-
+                    <img src="{{ asset('images/' . $brand->image) }}" width="100"> <br>
                     <div class="row">
 
-
+                        <label>New image</label>
                             <div class="input-group col-xs-12">
                                 <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Image">
 

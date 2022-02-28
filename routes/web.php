@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdminPage;
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Fontend\Pagescontroller;
 use App\Http\Controllers\Fontend\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,7 @@ Route::group(['prefix '=> '/product'],function(){
     Route::post('/store',[AdminProductController::class,'store'])->name('admin.product.store');
     Route::post('/edit/{id}',[AdminProductController::class,'update'])->name('admin.product.update');
     Route::post('/delete/{id}',[AdminProductController::class,'delete'])->name('admin.product.delete');
-    Route::get('/product',[AdminProductController::class,'show'])->name('admin.product.index');
+    Route::get('/',[AdminProductController::class,'show'])->name('admin.product.index');
     Route::get('/edit/{id}',[AdminProductController::class,'edit'])->name('admin.product.edit');
 });
 
@@ -45,6 +46,17 @@ Route::group(['prefix '=> '/categories'],function(){
     Route::get('/categories',[CategoryController::class,'index'])->name('admin.category.index');
     Route::get('/categories/edit/{id}',[CategoryController::class,'edit'])->name('admin.category.edit');
 });
+//brand routes
+Route::group(['prefix '=> '/brands'],function(){
+
+    Route::get('/brand/create',[BrandController::class,'create'])->name('admin.brand.create');
+    Route::post('/brand/store',[BrandController::class,'store'])->name('admin.brand.store');
+    Route::post('/brand/edit/{id}',[BrandController::class,'update'])->name('admin.brand.update');
+    Route::post('/brand/delete/{id}',[BrandController::class,'delete'])->name('admin.brand.delete');
+    Route::get('/brand',[BrandController::class,'index'])->name('admin.brand.index');
+    Route::get('/brand/edit/{id}',[BrandController::class,'edit'])->name('admin.brand.edit');
+});
+
 
 
 });

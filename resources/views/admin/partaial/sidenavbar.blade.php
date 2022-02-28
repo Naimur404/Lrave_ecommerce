@@ -43,30 +43,28 @@
               </ul>
             </div>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/forms/basic_elements.html">
-              <i class="menu-icon typcn typcn-shopping-bag"></i>
-              <span class="menu-title">Form elements</span>
+            <a class="nav-link" data-toggle="collapse" href="#basic" aria-expanded="false">
+              <i class="menu-icon typcn typcn-coffee"></i>
+              <span class="menu-title">Brand</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin.brand.create') }}">Add Brand</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin.brand.index') }}">Manage Brand</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a>
+                </li>
+              </ul>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../pages/charts/chartjs.html">
-              <i class="menu-icon typcn typcn-th-large-outline"></i>
-              <span class="menu-title">Charts</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../pages/tables/basic-table.html">
-              <i class="menu-icon typcn typcn-bell"></i>
-              <span class="menu-title">Tables</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../pages/icons/font-awesome.html">
-              <i class="menu-icon typcn typcn-user-outline"></i>
-              <span class="menu-title">Icons</span>
-            </a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="menu-icon typcn typcn-document-add"></i>

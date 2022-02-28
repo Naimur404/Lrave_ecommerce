@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Models\Product;
@@ -31,8 +32,8 @@ class AdminProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->quantity = $request->quantity;
-        $product->category_id = 1;
-        $product->brand_id = 1;
+        $product->category_id = $request->category_id;
+        $product->brand_id = $request->brand_id;
         $product->admin_id = 1;
         $product->slug = str::slug($request->title);
         $product->save();
@@ -92,7 +93,8 @@ class AdminProductController extends Controller
         $product->price = $request->price;
         $product->quantity = $request->quantity;
 
-
+        $product->category_id = $request->category_id;
+        $product->brand_id = $request->brand_id;
         $product->save();
         return redirect()->route('admin.product.index');
 
@@ -129,7 +131,6 @@ class AdminProductController extends Controller
         $product = Product::find($id);
         if (!is_null($product)) {
             $product->delete();
-
         }
         session()->flash('sucess', 'Product delete sucessfully!!');
         return back();

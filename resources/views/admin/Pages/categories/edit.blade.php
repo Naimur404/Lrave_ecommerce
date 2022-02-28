@@ -8,29 +8,19 @@
         <div class="card-body">
             @include('admin.partaial.message')
 
-            <form class="forms-sample" action="{{ route('admin.category.update', $category->id) }}" method="post"
+            <form class="forms-sample" action="{{ route('admin.brand.update', $brand->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputName1"> Category Name</label>
-                    <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{ $category->name }}">
+                    <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{ $brand->name }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Description</label>
-                    <textarea class="form-control" name="description" id="exampleTextarea1" rows="2" >{{ $category->description }}</textarea>
+                    <textarea class="form-control" name="description" id="exampleTextarea1" rows="2" >{{ $brand->description }}</textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleInputName1">Parent Category</label>
-                    <select class="form-control" name="praent_id" id="">
-                        <option value="
-                        ">Please Select a Primary Category</option>
-                        @foreach ($main_category as  $cat)
-                        <option value="{{ $cat->id }}" {{ $cat->id == $category->praent_id ? 'selected': ''}}>{{ $cat->name }}</option>
-
-                        @endforeach
-                    </select>
-                </div>
+               
 
                 {{-- <div class="form-group">
             <label for="exampleInputPassword4">Price</label>
@@ -39,7 +29,7 @@
                 <div class="form-group">
                     <label>Old Image</label><br>
 
-                    <img src="{{ asset('images/' . $category->image) }}" width="100"> <br>
+                    <img src="{{ asset('images/' . $brand->image) }}" width="100"> <br>
                     <div class="row">
 
                         <label>New image</label>
