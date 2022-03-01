@@ -15,4 +15,14 @@ class Category extends Model
     return $this->hasMany(Product::class);
 }
 
+//praent or not Category
+//check is the category is child category of that praent category
+public static function praentorNot($praent_id,$child_id){
+$categories = Category::where('id',$child_id)->where('praent_id', $praent_id)->get();
+if(!is_null($categories)){
+    return true;
+}else{
+    return false;
+}
+}
 }

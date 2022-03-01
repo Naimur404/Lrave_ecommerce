@@ -2,9 +2,9 @@
 
 @section('content')
 <body>
-    @include('partial.navbar')
-    <div class="wrapper">
 
+    <div class="wrapper">
+        @include('partial.navbar')
     <div class="container margin-top">
         <div class="row">
             <div class="col-md-4">

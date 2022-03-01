@@ -20,6 +20,45 @@
                     <textarea class="form-control" name="description" id="exampleTextarea1" rows="2" >{{ $product->description }}</textarea>
                 </div>
                 <div class="form-group">
+                    <label for="exampleInputPassword4">Select Category</label>
+
+                    <select class="form-control" name="category_id">
+
+                        <option value="">Please Select a category for the product</option>
+                        @foreach (App\Models\Category::orderby('name', 'asc')->where('praent_id', null)->get()
+                        as $praent)
+
+                        <option value="{{ $praent->id }}" {{ $praent->id == $product->category->id ? 'selected': ''}}>{{ $praent->name }}</option>
+
+                        @foreach (App\Models\Category::orderby('name', 'asc')->where('praent_id', $praent->id)->get()
+                as $child)
+                <option value="{{ $child->id }}" {{ $child->id == $product->category->id ? 'selected': ''}}> --------> {{ $child->name }}</option>
+                @endforeach
+                        @endforeach
+                    </select>
+
+
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Select Category</label>
+
+                    <select class="form-control" name="brand_id">
+
+                        <option value="">Please Select a category for the product</option>
+                        @foreach (App\Models\Brand::orderby('name', 'asc')->get()
+                        as $br)
+
+                        <option value="{{ $br->id }}" {{ $br->id == $product->brand->id ? 'selected' : ''}}>{{ $br->name }}</option>
+
+                        @endforeach
+                    </select>
+
+
+                </div>
+
+
+                <div class="form-group">
                     <label for="exampleInputPassword4">Price</label>
                     <input type="number" class="form-control" name="price" id="exampleInputPassword4" value="{{ $product->price }}">
                 </div>

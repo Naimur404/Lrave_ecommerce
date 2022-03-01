@@ -39,7 +39,7 @@ class AdminProductController extends Controller
         $product->save();
 
 
-        //PRODUCTIMAGE MODEL inser image
+        //PRODUCTIMAGE MODEL inset image
 
         //    if($request->hasFile('image')){
         //        $image = $request->file('image');

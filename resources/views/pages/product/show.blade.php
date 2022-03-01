@@ -5,7 +5,7 @@
 @section('content')
 
     <body>
-        @include('partial.navbar')
+        
         <div class="wrapper">
 
             <div class="container margin-top">

@@ -9,16 +9,21 @@
                 <div class="col-md-4">
                     @include('admin.partaial.message')
 
-                  @include('partial.product_sidebar')
+                    @include('partial.product_sidebar')
 
                 </div>
                 <div class="col-md-8">
                     <div class="widget">
-                        <h3>All Products in <span class="badge bg-danger">{{ $category->name }}</span> </h3>
+                        <h3>All Products in <span class="badge bg-danger">{{ $category->name }} Category</span> </h3>
                         @php
                             $products = $category->products()->paginate(9);
                         @endphp
-                        @include('pages.product.partial.all_product')
+                        @if ($products->count() > 0)
+                            @include('pages.product.partial.all_product')
+                        @else
+                            <div class="alert alert-warning"> No Products has added yet in this Category</div>
+                        @endif
+
 
                         <div class="d-flex justify-content-center">
                             {!! $products->links() !!}
@@ -32,14 +37,14 @@
 
 
 
-                </div>
-
             </div>
 
-            {{-- <footer class="footer-bottom">
+        </div>
+
+        {{-- <footer class="footer-bottom">
             <p class="text-center">&copy; 2022 All rights reserved</p>
         </footer> --}}
-        </div>
+    </div>
 
     </div>
 
