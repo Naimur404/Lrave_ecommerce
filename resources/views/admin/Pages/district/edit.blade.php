@@ -3,23 +3,29 @@
     <div class="card">
 
         <div class="card-header">
-            Edit Division
+            Edit District
         </div>
         <div class="card-body">
             @include('admin.partaial.message')
 
-            <form class="forms-sample" action="{{ route('admin.division.update', $division->id) }}" method="post"
+            <form class="forms-sample" action="{{ route('admin.district.update', $district->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputName1">Name</label>
-                    <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{ $division->name }}">
+                    <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{ $district->name }}">
                 </div>
                 <div class="form-group">
-                    <label for="Priority">Priority</label>
-                    <input type="text" class="form-control" name="priority" id="Priority" value="{{ $division->priority }}">
-                </div>
+                    <label for="division_id">Select a division for the district</label>
+                    <select name="division_id" id="" class="form-control">
 
+                        <option value="">Please select a divison for district</option>
+                        @foreach ($divisions as $division)
+                            <option value="{{ $division->id }} "{{ $district->division->id == $division->id ? 'selected' : '' }}>{{ $division->name }}</option>
+                        @endforeach
+                    </select>
+
+                </div>
 
                 {{-- <div class="form-group">
             <label for="exampleInputPassword4">Price</label>
@@ -31,7 +37,7 @@
           <label for="exampleTextarea1">Textarea</label>
           <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
         </div> --}}
-                <button type="submit" class="btn btn-success mr-2">update Division</button>
+                <button type="submit" class="btn btn-success mr-2">Update Division</button>
                 <button class="btn btn-light">Cancel</button>
             </form>
         </div>

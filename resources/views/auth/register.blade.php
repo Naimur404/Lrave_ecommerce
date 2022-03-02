@@ -46,8 +46,8 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone_no" type="phone" class="form-control @error('phone_no') is-invalid @enderror"
-                                        first_name="phone_no" value="{{ old('phone_no') }}" required >
+                                    <input id="phone_no" type="text" class="form-control @error('phone_no') is-invalid @enderror"
+                                        name="phone_no" value="{{ old('phone_no') }}" required >
 
                                     @error('phone_no')
                                         <span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                        first_name="email" value="{{ old('email') }}" required autocomplete="email">
+                                        name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -78,7 +78,7 @@
 
                                 <div class="col-md-6">
                                     <input id="street_address" type="text" class="form-control @error('street_address') is-invalid @enderror"
-                                        first_name="street_address" value="{{ old('street_address') }}" required >
+                                        name="street_address" value="{{ old('street_address') }}" required >
 
                                     @error('street_address')
                                         <span class="invalid-feedback" role="alert">
@@ -88,13 +88,51 @@
                                 </div>
                             </div>
 
+
+
+
+                            <div class="row mb-3">
+                                <label for="division_id"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Division') }}</label>
+
+                                <div class="col-md-6">
+                                    <select name="division_id" id="" class="form-control">
+                                        <option value="">Select your Divison</option>
+                                        @foreach ($divisions as $division)
+                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <label for="district_id"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('District') }}</label>
+
+                                <div class="col-md-6">
+                                    <select name="district_id" id="" class="form-control">
+                                        <option value="">Select your District</option>
+                                        @foreach ($districts as $district)
+                                        <option value="{{ $district->division->id }}">{{ $district->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
                             <div class="row mb-3">
                                 <label for="password"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" first_name="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
 
                                     @error('password')
@@ -111,9 +149,10 @@
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
-                                        first_name="password_confirmation" required autocomplete="new-password">
+                                        name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
+
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">

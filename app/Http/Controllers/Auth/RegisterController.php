@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
+use App\Models\Division;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-
+use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -41,6 +43,14 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+    // @override
+    //dispay the registration form
+    public function showRegistrationForm()
+    {
+        $divisions = Division::orderby('priority','asc')->get();
+        $districts = District::orderby('name','asc')->get();
+        return view('auth.register', compact('divisions','districts'));
+    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -51,9 +61,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'first_name' => ['required', 'string', 'max:30'],
+            'last_name' => [ 'string', 'max:20'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone_no' => ['required','max:12'],
+            'street_address' => ['required', 'string', 'max:100'],
+            'division_id' => ['required', 'numeric'],
+            'district_id' => ['required', 'numeric'],
         ]);
     }
 
@@ -66,7 +81,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'phone_no' => $data['phone_no'],
+            'username' => Str::slug($data['first_name'].$data['last_name']),
+            'street_address' => $data['street_address'],
+            'division_id' => $data['division_id'],
+            'district_id' => $data['district_id'],
+            'ip_address' => request()->ip(),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

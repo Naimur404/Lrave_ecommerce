@@ -3,31 +3,31 @@
     <div class="card">
 
         <div class="card-header">
-            Manage Brand
+            Manage District
         </div>
         <div class="card-body">
             @include("admin.partaial.message")
             <table class="table table-hover table-striped">
                 <tr>
                     <th>#</th>
-                    <th>Division Name</th>
-                    <th>Division Priority</th>
+                    <th>District Name</th>
+                    <th>Division name</th>
 
                     <th style="">Action</th>
                 </tr>
-                @foreach ($divisions as $division)
+                @foreach ($districts as $district)
                     <tr>
 
 
                         <td>#</td>
-                        <td>{{ $division->name }}</td>
-                        <td>{{ $division->priority }}</td>
+                        <td>{{ $district->name }}</td>
+                        <td>{{ $district->division->name }}</td>
 
-                        {{-- <td>{{ $division->parent->name }}</td> --}}
-                        {{-- <td>{{ $division->quantity }}</td> --}}
-                        <td><a href="{{ route('admin.division.edit', $division->id) }}" class="btn btn-success">Edit</a>
-                            <a href="#deleteModal{{ $division->id }}" data-toggle="modal" class="btn btn-danger">Delete</a>
-                            <div class="modal fade" id="deleteModal{{ $division->id }}" tabindex="-1" role="dialog"
+                        {{-- <td>{{ $district->parent->name }}</td> --}}
+                        {{-- <td>{{ $district->quantity }}</td> --}}
+                        <td><a href="{{ route('admin.district.edit', $district->id) }}" class="btn btn-success">Edit</a>
+                            <a href="#deleteModal{{ $district->id }}" data-toggle="modal" class="btn btn-danger">Delete</a>
+                            <div class="modal fade" id="deleteModal{{ $district->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -40,7 +40,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('admin.division.delete', $division->id) }}" method="POST">
+                                            <form action="{{ route('admin.district.delete', $district->id) }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">Parmanent Delete</button>
                                             </form>

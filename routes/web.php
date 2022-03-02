@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AdminPage;
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\DistrictsController;
 use App\Http\Controllers\Backend\DivisionsController;
 use App\Http\Controllers\Fontend\CategoryController as FontendCategoryController;
 use App\Http\Controllers\Fontend\Pagescontroller;
@@ -72,17 +73,17 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/divison/edit/{id}', [DivisionsController::class, 'update'])->name('admin.division.update');
         Route::post('/divison/delete/{id}', [DivisionsController::class, 'delete'])->name('admin.division.delete');
         Route::get('/divison', [DivisionsController::class, 'index'])->name('admin.division.index');
-        Route::get('/divison/division/edit/{id}', [DivisionsController::class, 'edit'])->name('admin.division.edit');
+        Route::get('/division/edit/{id}', [DivisionsController::class, 'edit'])->name('admin.division.edit');
     });
 
     Route::group(['prefix ' => '/district'], function () {
 
-        Route::get('/district/create', [BrandController::class, 'create'])->name('admin.district.create');
-        Route::post('/district/store', [BrandController::class, 'store'])->name('admin.district.store');
-        Route::post('/district/edit/{id}', [BrandController::class, 'update'])->name('admin.district.update');
-        Route::post('/district/delete/{id}', [BrandController::class, 'delete'])->name('admin.district.delete');
-        Route::get('/district', [BrandController::class, 'index'])->name('admin.district.index');
-        Route::get('/district/district/edit/{id}', [BrandController::class, 'edit'])->name('admin.district.edit');
+        Route::get('/district/create', [DistrictsController::class, 'create'])->name('admin.district.create');
+        Route::post('/district/store', [DistrictsController::class, 'store'])->name('admin.district.store');
+        Route::post('/district/edit/{id}', [DistrictsController::class, 'update'])->name('admin.district.update');
+        Route::post('/district/delete/{id}', [DistrictsController::class, 'delete'])->name('admin.district.delete');
+        Route::get('/district', [DistrictsController::class, 'index'])->name('admin.district.index');
+        Route::get('/district/edit/{id}', [DistrictsController::class, 'edit'])->name('admin.district.edit');
     });
 });
 

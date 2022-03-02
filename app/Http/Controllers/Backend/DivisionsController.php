@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
 use App\Models\Division;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class DivisionsController extends Controller
         return view('admin.Pages.division.index',compact('divisions'));
     }
     public function create(){
-        return view('admin.Pages.brand.create');
+        return view('admin.Pages.division.create');
 
 
     }
@@ -38,7 +39,7 @@ return redirect()->route('admin.division.index');
     public function edit($id){
         $division = Division::find($id);
         if(!is_null($division)){
-            return redirect()->route('admin.district.edit',compact('division'));
+            return view('admin.Pages.division.edit',compact('division'));
 
         }else{
             return redirect()->route('admin.division.index');
@@ -66,9 +67,16 @@ return redirect()->route('admin.division.index');
     public function delete($id){
         $division = Division::find('id');
         if(!is_null($division)){
+
+            //delete all the district for this
+            $districts = District::where('divison_id', $division->id)->get();
+            foreach($districts as $district){
+                $district->delete();
+            }
             $division->delete();
         }
         session()->flash('sucess', 'Division has deleted sucessfully');
         return back();
     }
 }
+
