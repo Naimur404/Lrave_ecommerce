@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AdminPage;
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\DivisionsController;
 use App\Http\Controllers\Fontend\CategoryController as FontendCategoryController;
 use App\Http\Controllers\Fontend\Pagescontroller;
 use App\Http\Controllers\Fontend\ProductController;
@@ -34,14 +35,14 @@ Route::get('/Category/{id}', [FontendCategoryController::class, 'show'])->name('
 Route::group(['prefix' => 'admin'], function () {
 
     // Route::get('/',[AdminPage::class,'index'])->name('admin.index');
-    Route::group(['prefix ' => '/product'], function () {
+    Route::group(['prefix ' => '/'], function () {
 
-        Route::get('/create', [AdminProductController::class, 'create'])->name('admin.product.create');
-        Route::post('/store', [AdminProductController::class, 'store'])->name('admin.product.store');
-        Route::post('/edit/{id}', [AdminProductController::class, 'update'])->name('admin.product.update');
-        Route::post('/delete/{id}', [AdminProductController::class, 'delete'])->name('admin.product.delete');
+        Route::get('/product/create', [AdminProductController::class, 'create'])->name('admin.product.create');
+        Route::post('/product/store', [AdminProductController::class, 'store'])->name('admin.product.store');
+        Route::post('/product/edit/{id}', [AdminProductController::class, 'update'])->name('admin.product.update');
+        Route::post('/product/delete/{id}', [AdminProductController::class, 'delete'])->name('admin.product.delete');
         Route::get('/', [AdminProductController::class, 'show'])->name('admin.product.index');
-        Route::get('/edit/{id}', [AdminProductController::class, 'edit'])->name('admin.product.edit');
+        Route::get('/product/edit/{id}', [AdminProductController::class, 'edit'])->name('admin.product.edit');
     });
 
     //categories route
@@ -63,6 +64,25 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/brand/delete/{id}', [BrandController::class, 'delete'])->name('admin.brand.delete');
         Route::get('/brand', [BrandController::class, 'index'])->name('admin.brand.index');
         Route::get('/brand/edit/{id}', [BrandController::class, 'edit'])->name('admin.brand.edit');
+    });
+    Route::group(['prefix ' => '/divison'], function () {
+
+        Route::get('/divison/create', [DivisionsController::class, 'create'])->name('admin.division.create');
+        Route::post('/divison/store', [DivisionsController::class, 'store'])->name('admin.division.store');
+        Route::post('/divison/edit/{id}', [DivisionsController::class, 'update'])->name('admin.division.update');
+        Route::post('/divison/delete/{id}', [DivisionsController::class, 'delete'])->name('admin.division.delete');
+        Route::get('/divison', [DivisionsController::class, 'index'])->name('admin.division.index');
+        Route::get('/divison/division/edit/{id}', [DivisionsController::class, 'edit'])->name('admin.division.edit');
+    });
+
+    Route::group(['prefix ' => '/district'], function () {
+
+        Route::get('/district/create', [BrandController::class, 'create'])->name('admin.district.create');
+        Route::post('/district/store', [BrandController::class, 'store'])->name('admin.district.store');
+        Route::post('/district/edit/{id}', [BrandController::class, 'update'])->name('admin.district.update');
+        Route::post('/district/delete/{id}', [BrandController::class, 'delete'])->name('admin.district.delete');
+        Route::get('/district', [BrandController::class, 'index'])->name('admin.district.index');
+        Route::get('/district/district/edit/{id}', [BrandController::class, 'edit'])->name('admin.district.edit');
     });
 });
 

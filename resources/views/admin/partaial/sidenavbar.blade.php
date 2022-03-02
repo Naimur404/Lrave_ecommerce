@@ -18,7 +18,7 @@
           </li>
           <li class="nav-item nav-category">Main Menu</li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.product.index') }}">
+            <a class="nav-link" href="{{ route('admin.brand.index') }}">
               <i class="menu-icon typcn typcn-document-text"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -64,6 +64,26 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#basic5" aria-expanded="false">
+              <i class="menu-icon typcn typcn-coffee"></i>
+              <span class="menu-title">Division</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="basic5">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin.division.create') }}">Add Brand</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin.division.index') }}">Manage Brand</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a>
+                </li>
+              </ul>
+            </div>
+          </li>
 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -79,6 +99,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('admin.category.index') }}"> Manage Category </a>
                 </li>
+
                 {{-- <li class="nav-item">
                   <a class="nav-link" href="../../pages/samples/register.html"> Register </a>
                 </li>
