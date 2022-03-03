@@ -26,6 +26,8 @@ class User extends Authenticatable
         'division_id',
         'district_id',
         'ip_address',
+        'remember_token',
+        'status',
         'email',
         'password',
     ];

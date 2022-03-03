@@ -1,5 +1,6 @@
 <?php
 
+;
 use App\Http\Controllers\Backend\AdminPage;
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Backend\DivisionsController;
 use App\Http\Controllers\Fontend\CategoryController as FontendCategoryController;
 use App\Http\Controllers\Fontend\Pagescontroller;
 use App\Http\Controllers\Fontend\ProductController;
+use App\Http\Controllers\Fontend\verificationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,8 @@ Route::get('/', [Pagescontroller::class, 'index'])->name('index');
 Route::get('/products', [ProductController::class, 'products'])->name('products');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/search', [ProductController::class, 'search'])->name('search');
+Route::get('/token/{token}', [verificationController::class, 'verify'])->name('user.verification');
+
 
 //categories routes
 Route::get('/Category', [FontendCategoryController::class, 'index'])->name('categories.index');
@@ -91,3 +95,5 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [Pagescontroller::class, 'index'])->name('index');
+
+//user verification route

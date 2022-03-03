@@ -9,14 +9,27 @@
         </ul>
     </div>
 @endif
-@if(Session::has('sucess'))
-<div class="alert alert-success">
-    <p>{{ Session::get('sucess') }}</p>
-</div>
-@endif
-@if(Session::has('errors'))
-<div class="alert alert-danger">
-    <p>{{ Session::get('errors') }}</p>
-</div>
+@if (Session::has('sucess'))
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="alert alert-success">
+                    <p>{{ Session::get('sucess') }}</p>
+                </div>
+            </div>
+        </div>
 
+
+    </div>
+@endif
+@if (Session::has('errors'))
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="alert alert-danger">
+                    <p>{{ Session::get('errors') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 @endif

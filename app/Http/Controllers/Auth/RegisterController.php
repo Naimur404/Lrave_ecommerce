@@ -7,6 +7,10 @@ use App\Models\District;
 use App\Models\Division;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Notifications\VerifyRegistration;
+
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -47,9 +51,9 @@ class RegisterController extends Controller
     //dispay the registration form
     public function showRegistrationForm()
     {
-        $divisions = Division::orderby('priority','asc')->get();
-        $districts = District::orderby('name','asc')->get();
-        return view('auth.register', compact('divisions','districts'));
+        $divisions = Division::orderby('priority', 'asc')->get();
+        $districts = District::orderby('name', 'asc')->get();
+        return view('auth.register', compact('divisions', 'districts'));
     }
 
     /**
@@ -62,10 +66,10 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:30'],
-            'last_name' => [ 'string', 'max:20'],
+            'last_name' => ['string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone_no' => ['required','max:12'],
+            'phone_no' => ['required', 'max:12'],
             'street_address' => ['required', 'string', 'max:100'],
             'division_id' => ['required', 'numeric'],
             'district_id' => ['required', 'numeric'],
@@ -78,19 +82,26 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function register(Request $request)
     {
-        return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'phone_no' => $data['phone_no'],
-            'username' => Str::slug($data['first_name'].$data['last_name']),
-            'street_address' => $data['street_address'],
-            'division_id' => $data['division_id'],
-            'district_id' => $data['district_id'],
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'phone_no' => $request->phone_no,
+            'username' => Str::slug($request->first_name . $request->last_name),
+            'street_address' => $request->street_address,
+            'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
             'ip_address' => request()->ip(),
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'remember_token' => Str::random(50),
+            'status' => 0,
         ]);
+
+        //send him a token
+        $user->notify(new VerifyRegistration($user));
+        session()->flash('sucess', 'A new comfirmation email sent to you.. Please check and confirm your email');
+        return redirect('/');
     }
 }
