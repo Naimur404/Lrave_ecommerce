@@ -1,6 +1,5 @@
 <?php
 
-;
 use App\Http\Controllers\Backend\AdminPage;
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -10,6 +9,7 @@ use App\Http\Controllers\Backend\DivisionsController;
 use App\Http\Controllers\Fontend\CategoryController as FontendCategoryController;
 use App\Http\Controllers\Fontend\Pagescontroller;
 use App\Http\Controllers\Fontend\ProductController;
+use App\Http\Controllers\Fontend\UsersController;
 use App\Http\Controllers\Fontend\verificationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,10 +29,11 @@ Route::get('/', [Pagescontroller::class, 'index'])->name('index');
 Route::get('/products', [ProductController::class, 'products'])->name('products');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/search', [ProductController::class, 'search'])->name('search');
-Route::get('/token/{token}', [verificationController::class, 'verify'])->name('user.verification');
+
 
 
 //categories routes
+
 Route::get('/Category', [FontendCategoryController::class, 'index'])->name('categories.index');
 Route::get('/Category/{id}', [FontendCategoryController::class, 'show'])->name('categories.show');
 
@@ -97,3 +98,10 @@ Auth::routes();
 Route::get('/', [Pagescontroller::class, 'index'])->name('index');
 
 //user verification route
+
+Route::group(['prefix ' => '/'], function () {
+    Route::get('/token/{token}', [verificationController::class, 'verify'])->name('user.verification');
+    Route::get('/dashboard', [UsersController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/profile', [UsersController::class, 'profile'])->name('user.profile');
+    Route::get('/profile/update', [UsersController::class, 'updateprofile'])->name('user.profile.update');
+});

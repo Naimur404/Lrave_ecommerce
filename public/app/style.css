@@ -1,3 +1,13 @@
+html{
+    height: 100%;
+
+}
+body{
+    position: relative;
+    min-height: 100%;
+}
+
+
 .bg-light {
     --bs-bg-opacity: 1;
     background-color: greenyellow !important;
@@ -20,6 +30,10 @@ max-height: 200px;
     padding: 20px;
     margin-top: 20px;
     background: greenyellow;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
 }
 .product-item{
@@ -51,4 +65,9 @@ list-group-item.active {
     background-color: #0d6efd;
     border-color: #0d6efd;
     border-radius: 0px !important;
+}
+.pointer
+{
+cursor: pointer;
+
 }
