@@ -59,16 +59,16 @@ class LoginController extends Controller
             // log him now
             return redirect()->intended(route('index'));
         } else {
-            // send him a token again
+
 
             if (!is_null($user)) {
-              
+
                 $user->notify(new VerifyRegistration($user));
 
                 session()->flash('sucess', 'A comfirmation email sent to you.. Please check and confirm your email');
                 return redirect('/');
-            }else{
-                session()->flash('errors', 'Please login first');
+            } else {
+                session()->flash('error', 'Please login first');
                 return redirect()->route('login');
             }
         }

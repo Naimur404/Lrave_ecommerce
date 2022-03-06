@@ -46,7 +46,7 @@
           <label for="exampleTextarea1">Textarea</label>
           <textarea class="form-control" id="exampleTextarea1" rows="2"></textarea>
         </div> --}}
-                <button type="submit" class="btn btn-success mr-2">Add Category</button>
+                <button type="submit" class="btn btn-success mr-2">Add brand</button>
                 <button class="btn btn-light">Cancel</button>
             </form>
         </div>

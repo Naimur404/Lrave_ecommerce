@@ -45,7 +45,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#basic" aria-expanded="false">
+            <a class="nav-link" data-toggle="collapse" href="#basic" aria-expanded="false" aria-controls="basic">
               <i class="menu-icon typcn typcn-coffee"></i>
               <span class="menu-title">Brand</span>
               <i class="menu-arrow"></i>
@@ -65,7 +65,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#basic5" aria-expanded="false">
+            <a class="nav-link" data-toggle="collapse" href="#basic5" aria-expanded="false" aria-controls="basic5">
               <i class="menu-icon typcn typcn-coffee"></i>
               <span class="menu-title">Division</span>
               <i class="menu-arrow"></i>
@@ -85,7 +85,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#basic6" aria-expanded="false">
+            <a class="nav-link" data-toggle="collapse" href="#basic6" aria-expanded="false" aria-controls="basic6">
               <i class="menu-icon typcn typcn-coffee"></i>
               <span class="menu-title">District</span>
               <i class="menu-arrow"></i>

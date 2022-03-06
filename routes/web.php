@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\DistrictsController;
 use App\Http\Controllers\Backend\DivisionsController;
+use App\Http\Controllers\Fontend\CartController;
 use App\Http\Controllers\Fontend\CategoryController as FontendCategoryController;
 use App\Http\Controllers\Fontend\Pagescontroller;
 use App\Http\Controllers\Fontend\ProductController;
@@ -36,6 +37,18 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('/Category', [FontendCategoryController::class, 'index'])->name('categories.index');
 Route::get('/Category/{id}', [FontendCategoryController::class, 'show'])->name('categories.show');
+
+
+
+
+//cart route
+
+
+Route::prefix('carts')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('carts');
+    Route::post('/store', [CartController::class, 'store'])->name('carts.store');
+
+});
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -99,9 +112,10 @@ Route::get('/', [Pagescontroller::class, 'index'])->name('index');
 
 //user verification route
 
+
 Route::group(['prefix ' => '/'], function () {
     Route::get('/token/{token}', [verificationController::class, 'verify'])->name('user.verification');
-    Route::get('/dashboard', [UsersController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/profile/dashboard', [UsersController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/profile', [UsersController::class, 'profile'])->name('user.profile');
-    Route::get('/profile/update', [UsersController::class, 'updateprofile'])->name('user.profile.update');
+    Route::post('/profile/update', [UsersController::class, 'updateprofile'])->name('user.profile.update');
 });

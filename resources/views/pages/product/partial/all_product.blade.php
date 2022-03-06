@@ -27,7 +27,7 @@
             <div class="card-body">
                 <h5 class="card-title"><a href="{{ route('product.show',$product->slug) }}">{{ $product->title }}</a></h5>
                 <p class="card-text">Taka - {{ $product->price }}</p>
-                <a href="#" class="btn btn-primary">Add to cart</a>
+                @include('pages.product.partial.cart-button')
             </div>
         </div>
 

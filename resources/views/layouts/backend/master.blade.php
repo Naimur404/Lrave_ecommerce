@@ -8,7 +8,7 @@
 @include('admin.partaial.navbar')
 <div class="container-fluid page-body-wrapper">
     <!-- partial:../../partials/_sidebar.html -->
-@include('admin.partaial.sidenavbar')
+    @include('admin.partaial.sidenavbar')
 
     <div class="main-panel">
 

@@ -27,13 +27,13 @@ class AdminProductController extends Controller
             'image'  => 'required'
         ]);
 
-        $product = new Product;
-        $product->title = $request->title;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->quantity = $request->quantity;
-        $product->category_id = $request->category_id;
-        $product->brand_id = $request->brand_id;
+        $product = new Product($request->all());
+        // $product->title = $request->title;
+        // $product->description = $request->description;
+        // $product->price = $request->price;
+        // $product->quantity = $request->quantity;
+        // $product->category_id = $request->category_id;
+        // $product->brand_id = $request->brand_id;
         $product->admin_id = 1;
         $product->slug = str::slug($request->title);
         $product->save();

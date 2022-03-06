@@ -33,3 +33,14 @@
         </div>
     </div>
 @endif
+@if (Session::has('error'))
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="alert alert-danger">
+                    <p>{{ Session::get('errors') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif

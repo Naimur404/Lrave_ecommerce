@@ -39,6 +39,18 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{{ route('carts') }}"></a>
+                        <button class="btn btn-danger">
+
+<span class="mt-1">Cart</span>
+<span class="badge bg-warning">
+    {{ App\Models\Cart::totalitems() }}
+</span>
+
+                        </button>
+                    </li>
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
@@ -75,7 +87,7 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                                 <a class="dropdown-item" href="{{ route('user.dashboard') }}">My Dashboard</a>
-                                
+
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
