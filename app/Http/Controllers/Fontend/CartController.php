@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.users.carts');
     }
 
     /**
@@ -38,12 +38,12 @@ class CartController extends Controller
             'product_id' => 'required'
 
         ]);
-        if(Auth::check()){
+        if (Auth::check()) {
             $cart = Cart::Where('user_id', Auth::id())
-            ->where('product_id', $request->product_id)->first();
-        }else{
+                ->where('product_id', $request->product_id)->first();
+        } else {
             $cart = Cart::Where('ip_address', request()->ip())
-            ->where('product_id', $request->product_id)->first();
+                ->where('product_id', $request->product_id)->first();
         }
 
 
@@ -89,7 +89,15 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cart = Cart::find($id);
+        if (!is_null($cart)) {
+            $cart->product_quantity = $request->product_quantity;
+            $cart->save();
+        } else {
+            return redirect()->route('index');
+        }
+        return back();
+        session()->flash('sucess', 'Cart item Updated successfully');
     }
 
     /**
@@ -100,6 +108,13 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = Cart::find($id);
+        if(!is_null($cart)){
+            $cart->delete();
+        }else{
+            return redirect()->route('carts');
+        }
+        session()->flash('sucess','Cart item delete');
+        return back();
     }
 }

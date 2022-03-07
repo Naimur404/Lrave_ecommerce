@@ -41,11 +41,12 @@
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <li class="nav-item">
 
-                        <a class="nav-link" href="{{ route('carts') }}"></a>
+
                         <button class="btn btn-danger">
 
-<span class="mt-1">Cart</span>
+                            <a class="nav-link" href="{{ route('carts') }}">Cart</a>
 <span class="badge bg-warning">
+
     {{ App\Models\Cart::totalitems() }}
 </span>
 

@@ -46,6 +46,8 @@ Route::get('/Category/{id}', [FontendCategoryController::class, 'show'])->name('
 
 Route::prefix('carts')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('carts');
+    Route::post('/update/{id}', [CartController::class, 'update'])->name('carts.update');
+    Route::post('/delete/{id}', [CartController::class, 'destroy'])->name('carts.delete');
     Route::post('/store', [CartController::class, 'store'])->name('carts.store');
 
 });
