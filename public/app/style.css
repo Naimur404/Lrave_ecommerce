@@ -5,6 +5,7 @@ html{
 body{
     position: relative;
     min-height: 100%;
+    padding-bottom: 8rem;
 }
 
 
@@ -70,4 +71,7 @@ list-group-item.active {
 {
 cursor: pointer;
 
+}
+.hidden{
+    display: none;
 }

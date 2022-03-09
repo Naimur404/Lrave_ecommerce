@@ -8,6 +8,8 @@
 @yield('content')
 @include('partial.footer')
     </div>
-
+    @include('partial.scripts')
+    @yield('scripts')
 </body>
-@include('partial.scripts')
+
+

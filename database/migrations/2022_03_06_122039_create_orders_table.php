@@ -26,11 +26,16 @@ class CreateOrdersTable extends Migration
             $table->boolean('is_paid')->default(0);
             $table->boolean('is_completed')->default(0);
             $table->boolean('is_seen_by_admin')->default(0);
+            $table->string('transaction_id')->nullable();
             $table->timestamps();
 
             $table->foreignId('user_id')->nullable()
                 ->references('id')
                 ->on('users')
+                ->onDelete('cascade');
+            $table->foreignId('payment_id')->nullable()
+                ->references('id')
+                ->on('payments')
                 ->onDelete('cascade');
         });
     }

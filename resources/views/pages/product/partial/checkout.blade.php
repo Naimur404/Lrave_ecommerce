@@ -2,7 +2,7 @@
 
 @include('partial.navbar')
 @section('content')
-    <div class="container mt-2">
+    <div class="container mt-2 ">
         <div class="card card-body">
             <h2>Confirm Item</h2>
             <hr>
@@ -38,7 +38,7 @@
         </div>
 
 
-        <div class="card card-body mt-2">
+        <div class="card card-body mt-2 mb-1">
             <h2>Shipping Address</h2>
             <form method="POST" action="{{ route('user.profile.update') }}">
                 @csrf
@@ -118,33 +118,90 @@
 
                     <div class="col-md-6">
 
-                        <select class="form-control" name="payment_method_id" id="" required>
+                        <select class="form-control" name="payment_method_id" id="payments" required>
 
-                        <option value="">Select a payment method please</option>
+                            <option value="">Select a payment method please</option>
 
+                            @foreach ($payments as $payment)
+                                <option value="{{ $payment->short_name }}">{{ $payment->name }}</option>
+                            @endforeach
+                        </select>
                         @foreach ($payments as $payment)
-                            <option value="{{ $payment->id }}">{{ $payment->name }}</option>
-
+                            @if ($payment->short_name == 'cash_in')
+                                <div id="payment-{{ $payment->short_name }}"
+                                    class="hidden text-center alert alert-success">
+                                    <h3>
+                                        For Cash in there is nothing necessary .Just finish order.
+                                        <br>
+                                        <small>
+                                            You will get your product in two or three business days..
+                                        </small>
+                                    </h3>
+                                </div>
+                            @else
+                                <div id="payment-{{ $payment->short_name }}"
+                                    class="hidden text-center text-center alert alert-success">
+                                    <h3>
+                                        {{ $payment->name }} Payment
+                                    </h3>
+                                    <p>
+                                        <strong>{{ $payment->name }} No : {{ $payment->no }}</strong>
+                                        <br>
+                                        <strong>Account type : {{ $payment->type }}</strong>
+                                    </p>
+                                    <div class="alert alert-success">
+                                        Please send the above money to this Bkash No and write your transaction code below
+                                        there..
+                                    </div>
+                                    <input type="text" name="transaction_id" id="" class=" form-control"
+                                        placeholder="Enter Transaction Id">
+                                </div>
+                            @endif
                         @endforeach
-                    </select>
+
+
                     </div>
+
+
                 </div>
-            </div>
+                <div class="float-end">
 
-
-
-
-            <div class="row mb-0">
-                <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary">
                         {{ __('Oder Now') }}
                     </button>
+
+
                 </div>
-            </div>
+        </div>
+
+
+
         </form>
 
 
     </div>
 
-</div>
+    </div>
+@endsection
+@section('scripts')
+    <script type="text/javascript">
+        $("#payments").change(function() {
+            $payment_method = $("#payments").val();
+
+            if ($payment_method == "cash_in") {
+                $("#payment-cash_in").removeClass('hidden');
+                $("#payment-bkash").addClass('hidden');
+                $("#payment-rocket").addClass('hidden');
+            } else if ($payment_method == "bkash") {
+                $("#payment-bkash").removeClass('hidden');
+                $("#payment-rocket").addClass('hidden')
+                $("#payment-cash_in").addClass('hidden');
+            } else {
+                $("#payment-rocket").removeClass('hidden');
+                $("#payment-bkash").addClass('hidden')
+                $("#payment-cash_in").addClass('hidden');
+            }
+
+        })
+    </script>
 @endsection
