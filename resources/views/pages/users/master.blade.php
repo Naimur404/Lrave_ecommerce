@@ -6,17 +6,9 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
+                  
                     <a href="" class="list-group-item">
 
-                        @if (!is_null(Auth::user()->avatar))
-                            <img src="{{ asset('images/' . Auth::user()->avatar) }}" style="width: 80px"
-                                class="img rounded-circle">
-                        @elseif (Gravatar::exists(Auth::user()->email))
-                            <img src="{{ Gravatar::src(Auth::user()->email, 100) }}" style="width: 80px"
-                                class="img rounded-circle">
-                        @else
-                            <img src="{{ asset('images/user.png') }}" style="width: 80px" class="img rounded-circle">
-                        @endif
 
 
                     </a>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\DistrictsController;
 use App\Http\Controllers\Backend\DivisionsController;
 use App\Http\Controllers\Fontend\CartController;
 use App\Http\Controllers\Fontend\CategoryController as FontendCategoryController;
+use App\Http\Controllers\Fontend\CheckoutsController;
 use App\Http\Controllers\Fontend\Pagescontroller;
 use App\Http\Controllers\Fontend\ProductController;
 use App\Http\Controllers\Fontend\UsersController;
@@ -120,4 +121,12 @@ Route::group(['prefix ' => '/'], function () {
     Route::get('/profile/dashboard', [UsersController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/profile', [UsersController::class, 'profile'])->name('user.profile');
     Route::post('/profile/update', [UsersController::class, 'updateprofile'])->name('user.profile.update');
+});
+
+
+//checkout routes
+Route::group(['prefix ' => '/'], function () {
+    Route::get('/checkout', [CheckoutsController::class, 'index'])->name('checkouts');
+    Route::post('/checkout/store', [CheckoutsController::class, 'store'])->name('checkouts.store');
+
 });

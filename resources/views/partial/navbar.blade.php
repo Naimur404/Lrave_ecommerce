@@ -81,6 +81,7 @@
                                         class="img rounded-circle">
                                 @endif
 
+                              
 
                                 {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                             </a>

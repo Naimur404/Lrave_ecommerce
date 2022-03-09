@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('pages.users.carts');
+        return view('pages.product.partial.carts');
     }
 
     /**
