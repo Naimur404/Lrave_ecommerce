@@ -22,12 +22,12 @@
 
     </div>
 @endif
-@if (Session::has('errors'))
+@if (Session::has('sticky_error'))
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="alert alert-danger">
-                    <p>{{ Session::get('errors') }}</p>
+                    <p>{{ Session::get('sticky_error') }}</p>
                 </div>
             </div>
         </div>

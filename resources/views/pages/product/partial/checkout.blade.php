@@ -40,7 +40,7 @@
 
         <div class="card card-body mt-2 mb-1">
             <h2>Shipping Address</h2>
-            <form method="POST" action="{{ route('user.profile.update') }}">
+            <form method="POST" action="{{ route('checkouts.store') }}">
                 @csrf
 
                 <div class="row mb-3">
@@ -153,12 +153,12 @@
                                         Please send the above money to this Bkash No and write your transaction code below
                                         there..
                                     </div>
-                                    <input type="text" name="transaction_id" id="" class=" form-control"
-                                        placeholder="Enter Transaction Id">
+
                                 </div>
                             @endif
                         @endforeach
-
+                        <input type="text" name="transaction_id" id="transaction_id" class=" form-control hidden"
+                        placeholder="Enter Transaction Id">
 
                     </div>
 
@@ -196,10 +196,12 @@
                 $("#payment-bkash").removeClass('hidden');
                 $("#payment-rocket").addClass('hidden')
                 $("#payment-cash_in").addClass('hidden');
+                $("#transaction_id").removeClass('hidden');
             } else {
                 $("#payment-rocket").removeClass('hidden');
                 $("#payment-bkash").addClass('hidden')
                 $("#payment-cash_in").addClass('hidden');
+                $("#transaction_id").removeClass('hidden');
             }
 
         })

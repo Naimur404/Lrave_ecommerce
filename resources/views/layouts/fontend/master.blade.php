@@ -1,13 +1,11 @@
 @include('partial.head')
 
 <body>
-    @include('admin.partaial.message')
 
-    <div class="wrapper">
-
+@include('admin.partaial.message')
 @yield('content')
 @include('partial.footer')
-    </div>
+
     @include('partial.scripts')
     @yield('scripts')
 </body>

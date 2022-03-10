@@ -31,11 +31,11 @@ class Cart extends Model
     //total item
     public function totalitems()
     {if(Auth::check()){
-        $carts = Cart::orWhere('user_id', Auth::id())
-        ->orWhere('ip_address', request()->ip())
+        $carts = Cart::Where('user_id', Auth::id())
+        ->where('order_id', NULL)
         ->get();
     }else{
-        $carts = Cart::orWhere('ip_address', request()->ip())
+        $carts = Cart::Where('ip_address', request()->ip())->where('order_id', NULL)
         ->get();
     }
     $total_items =0;
@@ -49,11 +49,11 @@ class Cart extends Model
     //total cart model
     public function totalCarts()
     {if(Auth::check()){
-        $carts = Cart::orWhere('user_id', Auth::id())
-        ->orWhere('ip_address', request()->ip())
+        $carts = Cart::Where('user_id', Auth::id())
+        ->where('order_id', NULL)
         ->get();
     }else{
-        $carts = Cart::orWhere('ip_address', request()->ip())
+        $carts = Cart::Where('ip_address', request()->ip())->where('order_id', NULL)
         ->get();
     }
 
