@@ -45,10 +45,10 @@
                         <button class="btn btn-danger">
 
                             <a class="nav-link" href="{{ route('carts') }}">Cart</a>
-<span class="badge bg-warning">
+                            <span class="badge bg-warning">
 
-    {{ App\Models\Cart::totalitems() }}
-</span>
+                                {{ App\Models\Cart::totalitems() }}
+                            </span>
 
                         </button>
                     </li>
@@ -77,11 +77,11 @@
                                     <img src="{{ Gravatar::src(Auth::user()->email, 100) }}" style="width: 40px"
                                         class="img rounded-circle">
                                 @else
-                                    <img src="{{  asset('images/user.png') }}" style="width: 40px"
+                                    <img src="{{ asset('images/user.png') }}" style="width: 40px"
                                         class="img rounded-circle">
                                 @endif
 
-                              
+
 
                                 {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                             </a>
@@ -91,7 +91,7 @@
                                 <a class="dropdown-item" href="{{ route('user.dashboard') }}">My Dashboard</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                                             document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

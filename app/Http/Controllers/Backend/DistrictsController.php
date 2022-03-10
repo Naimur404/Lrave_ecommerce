@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class DistrictsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     public function index(){
         $districts = District::orderby('name','asc')->get();
         return view('admin.Pages.district.index',compact('districts'));

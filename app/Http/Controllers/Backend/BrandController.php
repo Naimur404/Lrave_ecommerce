@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     public function index()
     {
 
@@ -67,7 +71,7 @@ class BrandController extends Controller
         $brand =  Brand::find($id);
         $brand->name = $request->name;
         $brand->description = $request->description;
-       
+
         //insert image also
         if (!is_null($request->image)) {
 

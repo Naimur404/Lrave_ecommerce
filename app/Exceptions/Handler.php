@@ -2,7 +2,11 @@
 
 namespace App\Exceptions;
 
+use Exception;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Container\Container;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Arr;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -15,6 +19,7 @@ class Handler extends ExceptionHandler
     protected $dontReport = [
         //
     ];
+
 
     /**
      * A list of the inputs that are never flashed for validation exceptions.
@@ -37,5 +42,21 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'unauthenticated.'], 401);
+        }
+        $guard = Arr::get($exception->guards(), 0);
+        switch ($guard) {
+            case 'admin':
+                $login = 'admin.login';
+                break;
+            default:
+                $login = 'login';
+                break;
+        }
+        return redirect()->guest(route($login));
     }
 }

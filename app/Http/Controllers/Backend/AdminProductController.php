@@ -12,6 +12,10 @@ use Intervention\Image\Facades\Image;
 
 class AdminProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     public function create()
     {
         return view('admin.pages.product.create');

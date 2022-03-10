@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\Admin\LoginControllerAdmin;
 use App\Http\Controllers\Backend\AdminPage;
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -56,7 +57,12 @@ Route::prefix('carts')->group(function () {
 
 Route::group(['prefix' => 'admin'], function () {
 
-    // Route::get('/',[AdminPage::class,'index'])->name('admin.index');
+    //Admin login routes
+    Route::get('/login',[LoginControllerAdmin::class,'showLoginForm'])->name('admin.login');
+    Route::post('/login/submit',[LoginControllerAdmin::class,'login'])->name('admin.login.submit');
+    Route::post('/logout/admin',[LoginControllerAdmin::class,'logout'])->name('admin.logout.admin');
+
+
     Route::group(['prefix ' => '/'], function () {
 
         Route::get('/product/create', [AdminProductController::class, 'create'])->name('admin.product.create');

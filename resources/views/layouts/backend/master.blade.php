@@ -25,7 +25,7 @@
 
 
 
-@include('admin.partaial.footer')\
+@include('admin.partaial.footer')
 
         </div>
 </div>

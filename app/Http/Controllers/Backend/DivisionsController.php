@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class DivisionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     public function index(){
         $divisions = Division::orderby('priority','asc')->get();
         return view('admin.Pages.division.index',compact('divisions'));
