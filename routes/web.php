@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\Admin\ForgotPasswordController;
 use App\Http\Controllers\Auth\Admin\LoginControllerAdmin;
+use App\Http\Controllers\Auth\Admin\ResetPasswordController;
 use App\Http\Controllers\Backend\AdminPage;
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -59,9 +61,12 @@ Route::group(['prefix' => 'admin'], function () {
 
     //Admin login routes
     Route::get('/login',[LoginControllerAdmin::class,'showLoginForm'])->name('admin.login');
+    Route::get('/password/reset',[ForgotPasswordController::class,'showLinkRequestForm'])->name('admin.password.request');
     Route::post('/login/submit',[LoginControllerAdmin::class,'login'])->name('admin.login.submit');
     Route::post('/logout/admin',[LoginControllerAdmin::class,'logout'])->name('admin.logout.admin');
-
+    Route::post('/password/email',[ForgotPasswordController::class,'sendResetLinkEmail'])->name('admin.password.email');
+    Route::get('/password/reset/{token}',[ResetPasswordController::class,'showResetForm'])->name('admin.password.reset');
+    Route::post('/password/reset',[ResetPasswordController::class,'reset'])->name('admin.password.update');
 
     Route::group(['prefix ' => '/'], function () {
 

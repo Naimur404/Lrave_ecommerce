@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Null_;
 
 class CartController extends Controller
 {
@@ -40,10 +41,16 @@ class CartController extends Controller
         ]);
         if (Auth::check()) {
             $cart = Cart::Where('user_id', Auth::id())
-                ->where('product_id', $request->product_id)->first();
+                ->where('product_id', $request->product_id)
+                ->where('order_id', NULL)
+
+                ->first();
         } else {
             $cart = Cart::Where('ip_address', request()->ip())
-                ->where('product_id', $request->product_id)->first();
+                ->where('product_id', $request->product_id)
+                ->where('order_id', NULL)
+
+                ->first();
         }
 
 
