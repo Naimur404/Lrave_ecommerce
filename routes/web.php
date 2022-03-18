@@ -89,10 +89,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/categories', [CategoryController::class, 'index'])->name('admin.category.index');
         Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
     });
+    //order route
     Route::group(['prefix ' => '/orders'], function () {
 
 
         Route::post('/orders/delete/{id}', [OrderController::class, 'delete'])->name('admin.order.delete');
+
+        Route::post('/orders/completed/{id}', [OrderController::class, 'completed'])->name('admin.order.completed');
+        Route::post('/orders/paid/{id}', [OrderController::class, 'paid'])->name('admin.order.paid');
         Route::get('/', [OrderController::class, 'index'])->name('admin.order');
         Route::get('/view/{id}', [OrderController::class, 'show'])->name('admin.order.show');
 

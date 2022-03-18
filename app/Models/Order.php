@@ -19,15 +19,16 @@ class Order extends Model
         'is_complete',
         'is_seen_by_admin',
         'payment_id',
+        'transaction_id'
 
     ];
     public function user()
     {
-        return $this->belongsTo(User::class)->get();
+        return $this->belongsTo(User::class);
     }
     public function charts()
     {
-        return $this->belongsTo(Cart::class)->get();
+        return $this->hasMany(Cart::class);
     }
     public function payment()
     {
