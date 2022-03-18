@@ -9,3 +9,9 @@
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="{{ asset('asset/js/shared/jquery.cookie.js')}}" type="text/javascript"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.5/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#dataTable').DataTable();
+} );
+</script>

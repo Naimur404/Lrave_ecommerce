@@ -17,7 +17,8 @@ class Order extends Model
         'message',
         'is_paid',
         'is_complete',
-        'is_seen_by_admin'
+        'is_seen_by_admin',
+        'payment_id',
 
     ];
     public function user()
@@ -26,6 +27,10 @@ class Order extends Model
     }
     public function charts()
     {
-        return $this->hasMany(Cart::class)->get();
+        return $this->belongsTo(Cart::class)->get();
+    }
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
     }
 }

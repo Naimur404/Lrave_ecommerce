@@ -12,6 +12,10 @@
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+
+
+
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('asset/css/shared/style.css')}}">
     <!-- endinject -->

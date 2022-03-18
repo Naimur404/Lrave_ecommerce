@@ -24,7 +24,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="ui-basic"
                 aria-controls="ui-basic">
                 <i class="menu-icon typcn typcn-coffee"></i>
                 <span class="menu-title">Product</span>
@@ -36,7 +36,7 @@
                         <a class="nav-link" href="{{ route('admin.product.create') }}">Add prodduct</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Dropdowns</a>
+                        <a class="nav-link" href="{{ route('admin.product.index') }}">Manage Product</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a>
@@ -66,7 +66,7 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#basic5" aria-expanded="false"
+            <a class="nav-link" data-toggle="collapse" href="#basic5" aria-expanded="basic5"
                 aria-controls="basic5">
                 <i class="menu-icon typcn typcn-coffee"></i>
                 <span class="menu-title">Division</span>
@@ -87,7 +87,7 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#basic6" aria-expanded="false"
+            <a class="nav-link" data-toggle="collapse" href="#basic6" aria-expanded="basic6"
                 aria-controls="basic6">
                 <i class="menu-icon typcn typcn-coffee"></i>
                 <span class="menu-title">District</span>

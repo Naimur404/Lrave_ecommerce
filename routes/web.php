@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\DistrictsController;
 use App\Http\Controllers\Backend\DivisionsController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Fontend\CartController;
 use App\Http\Controllers\Fontend\CategoryController as FontendCategoryController;
 use App\Http\Controllers\Fontend\CheckoutsController;
@@ -74,7 +75,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/product/store', [AdminProductController::class, 'store'])->name('admin.product.store');
         Route::post('/product/edit/{id}', [AdminProductController::class, 'update'])->name('admin.product.update');
         Route::post('/product/delete/{id}', [AdminProductController::class, 'delete'])->name('admin.product.delete');
-        Route::get('/', [AdminProductController::class, 'show'])->name('admin.product.index');
+        Route::get('/product', [AdminProductController::class, 'show'])->name('admin.product.index');
         Route::get('/product/edit/{id}', [AdminProductController::class, 'edit'])->name('admin.product.edit');
     });
 
@@ -87,6 +88,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/categories/delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
         Route::get('/categories', [CategoryController::class, 'index'])->name('admin.category.index');
         Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+    });
+    Route::group(['prefix ' => '/orders'], function () {
+
+
+        Route::post('/orders/delete/{id}', [OrderController::class, 'delete'])->name('admin.order.delete');
+        Route::get('/', [OrderController::class, 'index'])->name('admin.order');
+        Route::get('/view/{id}', [OrderController::class, 'show'])->name('admin.order.show');
+
     });
     //brand routes
     Route::group(['prefix ' => '/brands'], function () {

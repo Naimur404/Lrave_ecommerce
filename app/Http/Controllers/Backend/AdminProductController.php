@@ -16,6 +16,7 @@ class AdminProductController extends Controller
     {
         $this->middleware('auth:admin');
     }
+  
     public function create()
     {
         return view('admin.pages.product.create');
