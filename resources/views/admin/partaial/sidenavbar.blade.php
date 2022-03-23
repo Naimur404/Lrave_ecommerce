@@ -135,6 +135,34 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#slider" aria-expanded="false" aria-controls="auth">
+                <i class="menu-icon typcn typcn-document-add"></i>
+                <span class="menu-title">Slider</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="slider">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.slider.index') }}"> Index </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.category.index') }}"> Manage Category </a>
+                    </li>
+
+                    {{-- <li class="nav-item">
+                  <a class="nav-link" href="../../pages/samples/register.html"> Register </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a>
+                </li> --}}
+                </ul>
+            </div>
+        </li>
+
     </ul>
 </nav>
 <!-- page-body-wrapper ends -->

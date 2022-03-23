@@ -13,11 +13,13 @@
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="first_name" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
+                                <label for="first_name"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror"
-                                        name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
+                                    <input id="first_name" type="text"
+                                        class="form-control @error('first_name') is-invalid @enderror" name="first_name"
+                                        value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
 
                                     @error('first_name')
                                         <span class="invalid-feedback" role="alert">
@@ -28,11 +30,13 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="last_name" class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
+                                <label for="last_name"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror"
-                                        name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+                                    <input id="last_name" type="text"
+                                        class="form-control @error('last_name') is-invalid @enderror" name="last_name"
+                                        value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
 
                                     @error('last_name')
                                         <span class="invalid-feedback" role="alert">
@@ -46,8 +50,9 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone_no" type="text" class="form-control @error('phone_no') is-invalid @enderror"
-                                        name="phone_no" value="{{ old('phone_no') }}" required >
+                                    <input id="phone_no" type="text"
+                                        class="form-control @error('phone_no') is-invalid @enderror" name="phone_no"
+                                        value="{{ old('phone_no') }}" required>
 
                                     @error('phone_no')
                                         <span class="invalid-feedback" role="alert">
@@ -72,13 +77,14 @@
                                     @enderror
                                 </div>
                             </div>
-                             <div class="row mb-3">
+                            <div class="row mb-3">
                                 <label for="street_address"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Street Address') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="street_address" type="text" class="form-control @error('street_address') is-invalid @enderror"
-                                        name="street_address" value="{{ old('street_address') }}" required >
+                                    <input id="street_address" type="text"
+                                        class="form-control @error('street_address') is-invalid @enderror"
+                                        name="street_address" value="{{ old('street_address') }}" required>
 
                                     @error('street_address')
                                         <span class="invalid-feedback" role="alert">
@@ -96,10 +102,10 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Division') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="division_id" id="" class="form-control">
+                                    <select name="division_id" id="division_id" class="form-control">
                                         <option value="">Select your Divison</option>
                                         @foreach ($divisions as $division)
-                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -111,11 +117,8 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('District') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="district_id" id="" class="form-control">
-                                        <option value="">Select your District</option>
-                                        @foreach ($districts as $district)
-                                        <option value="{{ $district->division->id }}">{{ $district->name }}</option>
-                                        @endforeach
+                                    <select name="district_id" id="district" class="form-control">
+
                                     </select>
                                 </div>
                             </div>
@@ -167,4 +170,29 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $("#division_id").change(function() {
+
+            var div = $("#division_id").val();
+            //send an ajax requtest
+            $('#district').html("");
+            var option = " ";
+            $.getJSON("/get-district/" + div, function(data) {
+
+                data.forEach(function(element) {
+
+                    console.log(element.name);
+                    option += " <option value='"+ element.id +"'>"+ element.name +"</option>"
+                });
+
+
+
+
+                $('#district').html(option);
+            });
+        });
+    </script>
 @endsection
