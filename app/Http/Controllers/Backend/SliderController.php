@@ -13,7 +13,7 @@ class SliderController extends Controller
 {
     public function index()
     {
-        $sliders = Slider::orderby('id', 'asc')->get();
+        $sliders = Slider::orderby('id', 'desc')->get();
         return view('admin.pages.slider.index', compact('sliders'));
     }
     public function store(Request $request)

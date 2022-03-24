@@ -2,7 +2,7 @@
 
     @csrf
 <input type="hidden" name="product_id" value="{{ $product->id }}">
-    <button type="submit" name="button" class="btn btn-warning"><i class="fa fa-plus"> Add to cart</i></button>
+    <button type="button" name="button" class="btn btn-warning" onclick="addtoCart({{ $product->id }})"><i class="fa fa-plus"> Add to cart</i></button>
 
 
 </form>

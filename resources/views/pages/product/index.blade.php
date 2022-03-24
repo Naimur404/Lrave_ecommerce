@@ -12,7 +12,7 @@
                @include('partial.product_sidebar')
 
             </div>
-            
+            <div class="col-md-8">
                 <div class="widget">
                     <h3>All Products</h3>
 

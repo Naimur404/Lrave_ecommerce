@@ -45,7 +45,7 @@
                         <button class="btn btn-danger">
 
                             <a class="nav-link" href="{{ route('carts') }}">Cart</a>
-                            <span class="badge bg-warning">
+                            <span class="badge bg-warning" id="totalItems">
 
                                 {{ App\Models\Cart::totalitems() }}
                             </span>
