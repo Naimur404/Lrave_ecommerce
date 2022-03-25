@@ -11,7 +11,7 @@ body{
 
 .bg-light {
     --bs-bg-opacity: 1;
-    background-color: greenyellow !important;
+    background-color:    #037ad1!important;
 }
 
 
@@ -30,7 +30,7 @@ max-height: 200px;
 {
     padding: 20px;
     margin-top: 20px;
-    background: greenyellow;
+    background: #037ad1;
     position: absolute;
     left: 0;
     right: 0;
@@ -43,7 +43,7 @@ max-height: 200px;
 
 a {
     text-decoration: none;
-    color: black;
+    color: white;
   }
 
   a:hover {

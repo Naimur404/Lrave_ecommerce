@@ -1,6 +1,6 @@
 @extends('layouts.backend.master')
 @section('content')
-@include('admin.partaial.message')
+    @include('admin.partaial.message')
     <div class="card">
         <div class="card-header">
             View Order #LE{{ $order->id }}
@@ -108,23 +108,37 @@
                 </table>
             @endif
             <hr>
-            <form action="{{ route('admin.order.completed', $order->id) }}" style="display: inline-block!important;" method="post">
-            @csrf
-            @if($order->is_completed)
-            <input type="submit" value="Cancle Order" class="btn btn-danger" >
+            <form action="{{ route('admin.order.charge', $order->id) }}" method="post">
+                @csrf
+                <label for="">Shipping Cost</label>
+                <input type="number" name="shipping_charge" id="shipping_cost" value="{{ $order->shipping_charge }}">
+                <br>
+                <label for="">Coustom Discount</label>
+                <input type="number" name="custom_discount" id="custom_discount" value="{{ $order->custom_discount }}">
+                <br>
+                <input type="submit" value="Update" class="btn btn-success">
+                <a href="{{ route('admin.order.invoice', $order->id) }}" class="ml-2 btn btn-behance">Invoice</a>
 
-            @else
-            <input type="submit" value="Complete Order" class="btn btn-success" >
-            @endif
-        </form>
-            <form action="{{ route('admin.order.paid', $order->id) }}" style="display: inline-block!important;" method="post">
-            @csrf
-            @if($order->is_paid)
-            <input type="submit" value="Cancle Payment Paid" class="btn btn-danger">
-            @else
-            <input type="submit" value="Order Paid" class="btn btn-success">
-            @endif
-        </form>
+            </form>
+            <hr>
+            <form action="{{ route('admin.order.completed', $order->id) }}" style="display: inline-block!important;"
+                method="post">
+                @csrf
+                @if ($order->is_completed)
+                    <input type="submit" value="Cancle Order" class="btn btn-danger">
+                @else
+                    <input type="submit" value="Complete Order" class="btn btn-success">
+                @endif
+            </form>
+            <form action="{{ route('admin.order.paid', $order->id) }}" style="display: inline-block!important;"
+                method="post">
+                @csrf
+                @if ($order->is_paid)
+                    <input type="submit" value="Cancle Payment Paid" class="btn btn-danger">
+                @else
+                    <input type="submit" value="Order Paid" class="btn btn-success">
+                @endif
+            </form>
         </div>
     </div>
 @endsection

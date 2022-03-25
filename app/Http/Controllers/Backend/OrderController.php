@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -36,8 +37,30 @@ class OrderController extends Controller
             $order->is_completed = 1;
         }
         $order->save();
-        session()->flash('sucess','Order Completed Status Channge!!');
+        session()->flash('sucess', 'Order Completed Status Channge!!');
         return back();
+    }
+    public function ChargeUpdate(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $order->shipping_charge = $request->shipping_charge;
+        $order->custom_discount = $request->custom_discount;
+        $order->save();
+        session()->flash('sucess', 'Order Charge And Discount Has Channged!!');
+        return back();
+    }
+    /**
+     * Undocumented function
+     *invoice
+     * @param [type] $id
+     * @return void
+     */
+    public function invoice($id)
+    {
+        $order = Order::find($id);
+        $pdf = PDF::loadView('admin.pages.order.invoice', compact('order'));
+        return $pdf->stream('invoice.pdf');
+
     }
     public function paid($id)
     {
@@ -48,7 +71,7 @@ class OrderController extends Controller
             $order->is_paid = 1;
         }
         $order->save();
-        session()->flash('sucess','Order Paid Status Channge!!');
+        session()->flash('sucess', 'Order Paid Status Channge!!');
         return back();
     }
 }

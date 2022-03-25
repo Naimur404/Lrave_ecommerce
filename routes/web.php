@@ -101,11 +101,13 @@ Route::group(['prefix' => 'admin'], function () {
 
 
         Route::post('/orders/delete/{id}', [OrderController::class, 'delete'])->name('admin.order.delete');
+        Route::post('/charge-update/{id}', [OrderController::class, 'ChargeUpdate'])->name('admin.order.charge');
 
         Route::post('/orders/completed/{id}', [OrderController::class, 'completed'])->name('admin.order.completed');
         Route::post('/orders/paid/{id}', [OrderController::class, 'paid'])->name('admin.order.paid');
         Route::get('/', [OrderController::class, 'index'])->name('admin.order');
         Route::get('/view/{id}', [OrderController::class, 'show'])->name('admin.order.show');
+        Route::get('/invoice/{id}', [OrderController::class, 'invoice'])->name('admin.order.invoice');
     });
     //brand routes
     Route::group(['prefix ' => '/brands'], function () {

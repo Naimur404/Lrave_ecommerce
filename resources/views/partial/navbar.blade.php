@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Ecommerce</a>
+
+            <a class="navbar-brand" href="#"><img src="{{ asset('images/logo.png') }}" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -33,8 +33,7 @@
                         <form class="d-flex" action="{{ route('search') }}" method="get">
                             <input class="form-control me-2" type="sear" chplaceholder="Search" aria-label="Search"
                                 name="search">
-                            <button class="btn btn-outline-success" type="submit"><i
-                                    class="fa-brands fa-searchengin"></i>Search</button>
+                            <button class="btn btn-warning" type="submit" style=""><i class="fa fa-search"></i></button>
                         </form>
                     </li>
                 </ul>
