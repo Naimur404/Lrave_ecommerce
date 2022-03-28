@@ -11,7 +11,7 @@ class Pagescontroller extends Controller
 {
     public function index(){
         $sliders = Slider::orderby('priority', 'asc')->get();
-        $products = Product::orderby('id','desc')->paginate(9);
+        $products = Product::orderby('id','desc')->paginate(12);
         return view('pages.index',compact('products','sliders'));
     }
 
