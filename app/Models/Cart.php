@@ -29,7 +29,7 @@ class Cart extends Model
         return $this->belongsTo(Order::class);
     }
     //total item
-    public function totalitems()
+    public static function totalitems()
     {if(Auth::check()){
         $carts = Cart::Where('user_id', Auth::id())
         ->orWhere('ip_address', request()->ip())
@@ -48,7 +48,7 @@ class Cart extends Model
 
     }
     //total cart model
-    public function totalCarts()
+    public static function totalCarts()
     {if(Auth::check()){
         $carts = Cart::Where('user_id', Auth::id())
         ->orWhere('ip_address', request()->ip())

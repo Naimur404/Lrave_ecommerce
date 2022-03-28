@@ -151,13 +151,14 @@
                     <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
                     <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
 
-                    <a class="dropdown-item" href="{{ route('logout') }}"><i class="dropdown-item-icon ti-help-alt"></i>
+                    <a class="dropdown-item" href="{{ route('logout') }}"><i
+                            class="dropdown-item-icon ti-help-alt"></i>
 
-<form action="{{ route('admin.logout.admin') }}" class="form-inline" method="post">
-@csrf
-<input type="submit" value="Logout">
+                        <form action="{{ route('admin.logout.admin') }}" class="form-inline" method="post">
+                            @csrf
+                            <input type="submit" value="Logout">
 
-</form>
+                        </form>
 
                     </a>
 
