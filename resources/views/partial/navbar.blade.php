@@ -48,7 +48,7 @@
                                     <span class="mt-1">Cart</span>
                             <span class="badge bg-warning" id="totalItems">
 
-                                {{Cart::totalitems() }}
+                                
                             </span>
 
                         </button>
