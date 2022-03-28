@@ -48,7 +48,8 @@
                                     <span class="mt-1">Cart</span>
                             <span class="badge bg-warning" id="totalItems">
 
-                                
+                            @inject('total', 'App\Models\Cart' )
+                            {{ $total->totalitems() }}
                             </span>
 
                         </button>
