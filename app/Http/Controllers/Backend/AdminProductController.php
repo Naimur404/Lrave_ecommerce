@@ -16,10 +16,10 @@ class AdminProductController extends Controller
     {
         $this->middleware('auth:admin');
     }
-  
+
     public function create()
     {
-        return view('admin.pages.product.create');
+        return view('admin.Pages.product.create');
     }
     public function store(Request $request)
     {
