@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <div class="container">
 
             <a class="navbar-brand" href="#"><img src="{{ asset('images/logo.png') }}" alt=""></a>
@@ -9,10 +9,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('index') ? 'active' : '' }}">
                         <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('products') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('products') }}">Products</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -41,16 +41,18 @@
                     <li class="nav-item">
 
 
-                        <button class="btn btn-danger">
 
-                            <a class="nav-link" href="{{ route('carts') }}">Cart</a>
+
+                            <a class="nav-link btn-card-nav" href="{{ route('carts') }}">
+                                <button class="btn btn-danger ">
+                                    <span class="mt-1">Cart</span>
                             <span class="badge bg-warning" id="totalItems">
 
                                 {{ App\Models\Cart::totalitems() }}
                             </span>
 
                         </button>
-                    </li>
+                    </a>
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">

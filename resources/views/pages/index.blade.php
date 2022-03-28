@@ -12,7 +12,7 @@
 
 
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="border-radius: 5px">
                     @foreach ($sliders as $slider)
                         <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }}">
                             <img src="{{ asset('images/' . $slider->image) }}" class="d-block w-100"

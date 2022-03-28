@@ -50,10 +50,14 @@ class Cart extends Model
     //total cart model
     public function totalCarts()
     {if(Auth::check()){
-        $carts = Cart::totalitems();
-    }
+        $carts = Cart::Where('user_id', Auth::id())
+        ->orWhere('ip_address', request()->ip())
+        ->where('order_id', NULL)
+        ->get();
+    }else{
+        $carts = Cart::Where('ip_address', request()->ip())->where('order_id', NULL)
+        ->get();
 
+    }
     return $carts;
-
-    }
-}
+}}

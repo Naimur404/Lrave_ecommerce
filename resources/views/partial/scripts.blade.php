@@ -21,7 +21,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
     });
 
     function addtoCart(product_id) {
-        $.post("http://127.0.0.1:8000/api/carts/store", {
+        $.post("api/carts/store", {
                 product_id: product_id
             })
             .done(function(data) {
